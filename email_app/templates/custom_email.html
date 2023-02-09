@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>email</title>
+</head>
+<body>
+    {% if user %}
+        <h2>Уважаемый {{ user.first_name }} {{ user.last_name }}!</h2>
+    {% endif %}
+    <p>По вашему запросу отправляем список Ваших подписчиков:</p>
+    <ul>
+        {% for item in subscribers %}
+            <li>{{item.first_name}} | {{item.last_name}} | {{item.date_joined}}</li>
+        {% endfor %}
+    </ul>
+    <img src="{% url 'pixel_view' email_id=mail.id %}" height="1" width="1" alt="">
+</body>
+</html>
